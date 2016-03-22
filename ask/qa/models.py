@@ -8,7 +8,7 @@ class Question(models.Model):
     title = models.CharField(max_length=255)
     text = models.TextField()
     added_at = models.DateField(blank=True)
-    rating = models.IntegerField()
+    rating = models.FloatField()
     author = models.ForeignKey(User)
     article_likes = models.IntegerField(default=0)
 
@@ -19,7 +19,7 @@ class Question(models.Model):
 class Answer(models.Model):
     text = models.TextField()
     added_at = models.DateField(blank=True)
-    question = models.IntegerField()
+    question = models.ForeignKey(Question)
     author = models.ForeignKey(User)
 
     class Meta:
